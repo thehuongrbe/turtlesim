@@ -8,7 +8,7 @@ using namespace std;
 
 ros::Publisher pub;
 const float PI = 3.14159265;
-float rate = 5;
+float rate = 10;
 turtlesim::Pose current_pose;
 bool back=false;
 
@@ -60,15 +60,14 @@ int main(int argc, char** argv)
 	//cout<<"goc: "<<alpha<<" "<<current_pose.theta<<" "<<dalpha<<endl;
         if(alpha>=current_pose.theta+PI-1.5&&alpha<=current_pose.theta+PI+1.5&&test==true){	
 		 geometry_msgs::Twist msg = getMessage(
-                -min(4*distance,8.0),-4*dalpha);
+                -min(5*distance,8.0),-4*dalpha);
 	pub.publish(msg);
 
 	}
                 /* code */
 else{
             geometry_msgs::Twist msg = getMessage(
-                min(4*distance,6.0),
-                6*dalpha);
+                min(7*distance,9.0),13*dalpha);
 		test=false;
 pub.publish(msg);
 }         

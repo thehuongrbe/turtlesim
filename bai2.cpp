@@ -5,9 +5,11 @@
 #include <algorithm>
 #include <sstream>
 #include <turtlesim/Spawn.h>
+#include<cstdlib>
+#include<ctime>
 using namespace std;
 const float PI = 3.14159265;
-float rate = 5;
+float rate = 100;
 geometry_msgs::Twist getMessage(double linear_x, double angular_z)
 {
     geometry_msgs::Twist msg;
@@ -121,7 +123,7 @@ a[n];
             	}
                 /* code */
 else{
-           msg = getMessage(min(4*distance,6.5),6.5*dalpha);
+           msg = getMessage(min(4*distance,6.5),7*dalpha);
 		test=false;  
         pub[idx].publish(msg);     
 }                    
@@ -137,6 +139,7 @@ else{
     }
 int main(int argc, char** argv)
 {
+        srand(time(NULL));
     ros::init(argc, argv, "myturtle_control");
     ros::NodeHandle h;
     ros::Publisher pub[10];
